@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../vendors/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <title>Foro de Opinión</title>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+            aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Foro</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li role="presentation" class="dropdown">
+              <img src="" alt="" class="dropdown-toggle" data-toggle="dropdown">
+              <img id="img-user" alt="" class="img-responsive rounded-circle profile-img text-center">
+
+              <a class="dropdown-toggle" data-toggle="dropdown" id="name-user" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="" href="">Perfil
+                    <span class="glyphicon glyphicon-user">
+                  </a>
+                </li>
+                <li>
+                  <a class="sign-off" id="logout" href="#">Salir</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container-fluid -->
+    </nav>
+  </header>
+      <div class="container">
+          <div class="row">
+
+              <div class="col-xs-1 col-md-4 col-lg-4 col-sm-4">
+                 
+              </div>
+              <div class="col-xs-5 col-md-6 col-lg-6 col-sm-4">
+                  <div class="input-group">
+                      <input type="text" id="buscador" class="form-control" placeholder="Buscar...">
+                    </div>
+              </div>
+              <div class="col-xs-4 col-md-2 col-lg-2 col-sm-4">
+      
+                  <button type="button" class="btn btn-success dropdown-toggle" data-toggle="modal" data-target="#exampleModal" id="creartema-btn">
+                      Crear tema</button>
+              </div>
+            </div>
+      </div>
+      <section class="secinfo">
+      
+      </section>
+    
+  <footer>
+    <p class="text-center">Copyright&copy;</p>
+  </footer>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>por:</p>
+          <input type="text" id="input-nombre">
+          <p>mensaje:</p>
+          <input type="text" id="input-mensaje">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="guardar">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"></script>
+  <script type="text/javascript" src="../vendors/js/jquery-3.2.1.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script type="text/javascript" src="../vendors/bootstrap/js/bootstrap.min.js"></script>
+  <script src="../js/helpers/config_firebase.js"></script>
+  <script type="text/javascript" src="../js/main.js"></script>
+</body>
+
+</html>
