@@ -23,7 +23,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Foro</a>
+          <a class="navbar-brand" href="topics.html">Foro</a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -53,27 +53,39 @@
       <!-- /.container-fluid -->
     </nav>
   </header>
-    <section id="topic">
+<h3>Tema</h3>
+  <section id="topic">
 
-    </section>
-   
+  </section>
+<div class="row">
+  <div class="col-xs-2">
 
-      <div>
-        <input type="text" id="author" placeholder="author" disabled>
-        <input type="text" id="message" placeholder="text">
-        <button  id="btn_enviar">Crear Respuesta</button>
+  </div>
+  <div class="col-xs-8">
+    <input type="text" id="author" placeholder="author" disabled>
+    <br>
+    <input type="text" id="message" placeholder="text">   
+    <br> 
+    <button type="button" class="btn btn-success"  id="btn_enviar">
+      Crear Respuesta</button>
 
-      </div>
-<section class="respuestas">
-  
-</section>
-     <script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"></script>
-     <script type="text/javascript" src="../vendors/js/jquery-3.2.1.min.js"></script>
-     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-     <script type="text/javascript" src="../vendors/bootstrap/js/bootstrap.min.js"></script>
-     <script src="../js/helpers/config_firebase.js"></script>
-     <script type="text/javascript" src="../js/login.js"></script>
-     <script type="text/javascript" src="../js/functions.js"></script>
-     <script type="text/javascript" src="../js/verTopic.js"></script>
-  </body>
+  </div>
+  <div class="col-xs-2">
+    
+  </div>
+</div>
+<h3>Respuestas</h3>
+  <section class="respuestas">
+
+  </section>
+  <script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"></script>
+  <script type="text/javascript" src="../vendors/js/jquery-3.2.1.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script type="text/javascript" src="../vendors/bootstrap/js/bootstrap.min.js"></script>
+  <script src="../js/helpers/config_firebase.js"></script>
+  <script type="text/javascript" src="../js/login.js"></script>
+  <script type="text/javascript" src="../js/functions.js"></script>
+  <script type="text/javascript" src="../js/verTopic.js"></script>
+</body>
+
 </html>

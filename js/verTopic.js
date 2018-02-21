@@ -1,7 +1,9 @@
+$(document).ready(function() {
+
 var topicId = getParameterByName('topic_id');
 var $imageUser = $('#img-user');
 var $nameUser = $('#name-user');
-const $input_autor=$('#author');
+const $h2Autor = $('#author');
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     var displayName = user.displayName;
@@ -11,29 +13,17 @@ firebase.auth().onAuthStateChanged(function(user) {
     var providerData = user.providerData;
     $imageUser.attr('src', photoURL);
     $nameUser.text(displayName);
-    $input_autor.val(displayName)
+    $h2Autor.val(displayName)
   } else {
     console.log('No ha iniciado sesion');
   }
 });
-$('#btn_enviar').click(function() {
-  let nuevoAutor = $('#author').val();
-  let nuevoTema = $('#message').val();
-  $.post(`https://examen-laboratoria-sprint-5.herokuapp.com/topics/${topicId}/responses`,
-    {
-      author_name: nuevoAutor,
-      content: nuevoTema,
-      topic_id: topicId
-    },
-    function(data, status) {
-      let firstChil = $('.respuestas').eq(0);
-      $(firstChil).prepend(`<h2>${data.content}</h2><br><p>por:</p><h2>${data.author_name}</h2><hr>`);     
-    });
-});
 const obtenerTema = function() {
+  const proxy = 'https://cors-anywhere.herokuapp.com/';
+  const url = `http://examen-laboratoria-sprint-5.herokuapp.com/topics/${topicId}`;
+
   $.ajax({
-    url: `http://examen-laboratoria-sprint-5.herokuapp.com/topics/${topicId}`,
-    // dataType: 'json',
+    url: proxy + url,
     contentType: 'aplication/json'
   }).done(obtenerTopic)
     .done(obtenerRespuestas)
@@ -42,13 +32,27 @@ const obtenerTema = function() {
 
 // añadir tema a html
 const obtenerTopic = function(data) {
-  const contenido_respuesta = data.content;
+  const contenidoRespuesta = data.content;
   const autor = data.author_name;
-  $('#topic').append(`<h2>${contenido_respuesta}</h2>  <br>        <p>por:</p><h2>${autor}</h2>`);  
+  $('#topic').append(`
+  <div class="container shadow">
+      <div class="row">
+          <div>
+          ${contenidoRespuesta}
+           </div>
+      </div>
+      <div class="row">
+          <div>
+          ${autor}
+            </div>
+      </div>
+      <hr>`);  
 };
 const obtenerRespuestas = function() {
+  const proxy = 'https://cors-anywhere.herokuapp.com/';
+  const url = `http://examen-laboratoria-sprint-5.herokuapp.com/topics/${topicId}/responses`;
   $.ajax({
-    url: `http://examen-laboratoria-sprint-5.herokuapp.com/topics/${topicId}/responses`,
+    url: proxy + url,
     contentType: 'aplication/json'
   }).done(añadirRespuestas)
     .fail(manejarError);
@@ -61,7 +65,21 @@ const añadirRespuestas = function(response) {
     response.forEach(function(resp) {
       const temarespuesta = resp.content;
       const authorespuesta = resp.author_name;
-      $('.respuestas').append(`<h2>${temarespuesta}</h2><br><p>por:</p><h2>${authorespuesta}</h2><hr>`);  
+      let firstChil = $('.respuestas').eq(0); 
+      firstChil.prepend(`
+      <div class="container shadow">
+      <div class="row">
+          <div>
+          ${temarespuesta}
+           </div>
+      </div>
+      <div class="row">
+          <div>
+          ${authorespuesta}
+            </div>
+      </div>
+      <hr>
+    </div>`);  
     });
   }
 };
@@ -69,3 +87,32 @@ const manejarError = function() {
   console.log('Se ha producido un error');  
 };
 obtenerTema();
+
+$('#btn_enviar').click(function() {
+  let nuevoAutor = $('#author').val();
+  let nuevoTema = $('#message').val();
+  $.post(`https://examen-laboratoria-sprint-5.herokuapp.com/topics/${topicId}/responses`,
+    {
+      author_name: nuevoAutor,
+      content: nuevoTema,
+      topic_id: topicId
+    },
+    function(data, status) {
+      let respuestas = $('.respuestas');
+      respuestas.prepend(`
+      <div class="container shadow">
+      <div class="row">
+          <div>
+          ${data.author_name}
+           </div>
+      </div>
+      <div class="row">
+          <div>
+          ${data.content}
+            </div>
+      </div>
+      <hr>
+    </div>`);     
+    });
+});
+});
