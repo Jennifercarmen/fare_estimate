@@ -1,3 +1,4 @@
+$(document).ready(function() {
 var user = null;
 var usuariosConectados = null;
 var usuarios = null;
@@ -30,7 +31,7 @@ function login(uid, name, email) {
 function signOut() {
   firebase.auth().onAuthStateChanged(function(user) {
     database.ref('/connected/' + user.uid).remove();
-    window.location.href = 'index.html';  
+    window.location.href = '../index.html';  
   });
 };
 function signInFacebook() {
@@ -62,3 +63,4 @@ function signInGoogle() {
 }
 var $logout = $('.logout');
 $logout.on('click', signOut);
+});

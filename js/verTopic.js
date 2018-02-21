@@ -1,4 +1,21 @@
 var topicId = getParameterByName('topic_id');
+var $imageUser = $('#img-user');
+var $nameUser = $('#name-user');
+const $input_autor=$('#author');
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    var displayName = user.displayName;
+    console.log(displayName);
+    var photoURL = user.photoURL;
+    var uid = user.uid;
+    var providerData = user.providerData;
+    $imageUser.attr('src', photoURL);
+    $nameUser.text(displayName);
+    $input_autor.val(displayName)
+  } else {
+    console.log('No ha iniciado sesion');
+  }
+});
 $('#btn_enviar').click(function() {
   let nuevoAutor = $('#author').val();
   let nuevoTema = $('#message').val();

@@ -1,8 +1,12 @@
+
+
 $(document).ready(function() {
+  
   var $imageUser = $('#img-user');
   var $nameUser = $('#name-user');
   const $temas = $('.secinfo');
   const $input_autor=$('#input-autor');
+
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
       var displayName = user.displayName;
